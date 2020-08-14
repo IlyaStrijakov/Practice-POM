@@ -1,15 +1,23 @@
-import LoginPage from '../pages/login.page';
-import SecurePage from '../pages/secure.page';
+import SearchPage from '../pages/search.page';
+import BasePage from "../pages/base.page";
+const {totalSearch} = require('../../testData/expected.json');
 
-describe('My Login application', () => {
-    it('should login with valid credentials', () => {
-        LoginPage.open();
-
-        LoginPage.login('tomsmith', 'SuperSecretPassword!');
-        expect(SecurePage.flashAlert).toBeExisting();
-        expect(SecurePage.flashAlert).toHaveTextContaining(
-            'You logged into a secure area!');
+describe('Search page', () => {
+    it('should search for stainless steel table', () => {
+       BasePage.open();
     });
+    it('should fill in search input', function () {
+         SearchPage.searchInput.setValue('stainless work table');
+         SearchPage.submitButton.click()
+
+    });
+
+    it('should search for stainless steel table  ', function () {
+        SearchPage.searchLink1.getAttribute('title');
+        expect(SearchPage.searchLink1).toEqual(totalSearch.searchLink);
+    });
+
+
 });
 
 
