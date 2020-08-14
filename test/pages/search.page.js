@@ -10,6 +10,7 @@ class SearchPage extends BasePage {
 
 
 
+
             // login (username, password) {
             //     this.inputUsername.setValue(username);
             //     this.inputPassword.setValue(password);

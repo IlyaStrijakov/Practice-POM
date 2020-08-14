@@ -12,6 +12,8 @@ describe('Search page', () => {
 
     });
 
+
+
     it('should search for stainless steel table  ', function () {
         SearchPage.searchLink1.getAttribute('title');
         expect(SearchPage.searchLink1).toEqual(totalSearch.searchLink);
