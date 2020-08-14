@@ -11,3 +11,4 @@ class SecurePage extends BasePage {
 }
 
 export default new SecurePage();
+
