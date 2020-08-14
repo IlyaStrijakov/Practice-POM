@@ -1,25 +1,21 @@
 import SearchPage from '../pages/search.page';
-import BasePage from "../pages/base.page";
-const {totalSearch} = require('../../testData/expected.json');
+const { totalSearch,tableTitles } = require('../../testData/expected.json');
 
-describe('Search page', () => {
-    it('should search for stainless steel table', () => {
-       BasePage.open();
-    });
-    it('should fill in search input', function () {
-         SearchPage.searchInput.setValue('stainless work table');
-         SearchPage.submitButton.click()
-
-    });
-
-
-
-    it('should search for stainless steel table  ', function () {
-        SearchPage.searchLink1.getAttribute('title');
-        expect(SearchPage.searchLink1).toEqual(totalSearch.searchLink);
-    });
-
-
+before(() => {
+  SearchPage.open('/');
 });
 
+describe('Search page', () => {
 
+  it('should fill in search input', function () {
+    SearchPage.searchInput.setValue(totalSearch.searchText);
+    expect(SearchPage.searchInput.getValue()).toEqual(totalSearch.searchText)
+  });
+
+  it('should check the title of the first table',  function () {
+    SearchPage.searchBtn.click();
+    browser.pause(1000)
+    //SearchPage.searchResultField.isDisplayed();
+    expect(SearchPage.searchResultField.getAttribute('title')).toContain('Tables');
+  });
+});
