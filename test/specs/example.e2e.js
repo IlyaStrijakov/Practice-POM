@@ -28,12 +28,12 @@ describe('Search page', () => {
   expect(SearchPage.cartQuantity).toEqual('1');
   });
   it('should click on cart ', function () {
-    let cart = SearchPage.cartBtn.click()
+    SearchPage.viewCart.click()
     browser.pause(3000)
-    let empty = viewCart.emptyCart.click()
+    SearchPage.emptyCart.click()
     browser.pause(3000)
-    let popUp = viewCart.emptyCartPopUp.click()
-    browser.pause(3000)
-    expect(viewCart.cartIsEmpty.getText())
+    SearchPage.emptyCartPopUp.click()
+    browser.pause(5000)
+    expect(SearchPage.cartIsEmpty.getText()).toEqual(tableTitles.emptyCartHeader)
   });
 });
